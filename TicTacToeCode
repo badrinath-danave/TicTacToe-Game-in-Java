@@ -1,0 +1,143 @@
+package tictactoegame;
+
+import java.util.*;
+
+public class TicTacToe 
+{	
+	// declare the array for making square board.
+	public static final int[] squareBoard={'0','1','2','3','4','5','6','7','8','9'};
+	public static int i=0;
+	 
+	/*
+	  This method will make the board and drows the movement of players
+	*/
+	 public void tictactoeBoard()
+	 {
+		 
+		 System.out.println("   |   |   ");
+		 System.out.println(""+squareBoard[1]+" | "+squareBoard[2]+"| "+squareBoard[3]);
+		 System.out.println("---|---|---");
+		 System.out.println(""+squareBoard[4]+" | "+squareBoard[5]+"| "+squareBoard[6]);
+		 //System.out.println("   |   |   ");
+		 System.out.println("---|---|---");
+		 System.out.println(""+squareBoard[7]+" | "+squareBoard[8]+"| "+squareBoard[9]);
+		 System.out.println("   |   |   ");
+	 }
+	 
+	//This method decide winning movement of the players 
+	 public int decideWiningStroke()
+	 {
+		 if((squareBoard[1] == squareBoard[2]) &&(squareBoard[2] == squareBoard[3]))
+		 {
+			 return 1;
+		 }else if((squareBoard[4] == squareBoard[5]) &&(squareBoard[5] == squareBoard[6]))
+		 {
+			 return 1;
+		 }else if((squareBoard[7] == squareBoard[8]) &&(squareBoard[8] == squareBoard[9]))
+		 {
+			 return 1;
+		 }else if((squareBoard[1] == squareBoard[4]) &&(squareBoard[4] == squareBoard[7]))
+		 {
+			 return 1;
+		 }else if((squareBoard[2] == squareBoard[5]) &&(squareBoard[5] == squareBoard[8]))
+		 {
+			 return 1;
+		 }else if((squareBoard[3] == squareBoard[6]) &&(squareBoard[6] == squareBoard[9]))
+		 {
+			 return 1;
+		 }else if((squareBoard[1] == squareBoard[5]) &&(squareBoard[5] == squareBoard[9]))
+		 {
+			 return 1;
+		 }else if((squareBoard[3] == squareBoard[5]) &&(squareBoard[5] == squareBoard[7]))
+		 {
+			 return 1;
+		 }else if(squareBoard[1] !='1' && squareBoard[2] !='2' && squareBoard[3] !='3' && squareBoard[4] !='4'&&
+				 squareBoard[5] !='5' && squareBoard[6] !='6' && squareBoard[7] !='7' && squareBoard[8] !='8' && squareBoard[9] !='9')
+		 {
+			 return 0;
+		 }else
+		 {
+			 return -1;
+		 }
+		 
+		 
+		
+	 }
+	 
+	 
+	public static void main(String[] args) 
+	{
+		Scanner sc=new Scanner(System.in);
+		TicTacToe ttt=new TicTacToe();
+		int choice;
+		int player=1;
+		
+		char c;
+		
+		
+		do
+		{
+			ttt.tictactoeBoard();
+			if(player%2 == 0)
+			{
+				player=1;
+			}else
+			{
+				player=2;
+			}
+			
+			
+			System.out.println("player"+player+" . enter your move.!!!");
+			choice=sc.nextInt();
+			c=(player == 1)? 'X':'O';
+			
+			if(choice ==1 && squareBoard[1]=='1')
+			{
+				squareBoard[1]=c;
+			}else if(choice ==2 && squareBoard[2]=='2')
+			{
+				squareBoard[2]=c;
+			}else if(choice ==3 && squareBoard[3]=='3')
+			{
+				squareBoard[3]=c;
+			}else if(choice ==4 && squareBoard[4]=='4')
+			{
+				squareBoard[4]=c;
+			}else if(choice ==5 && squareBoard[5]=='5')
+			{
+				squareBoard[5]=c;
+			}else if(choice ==6 && squareBoard[6]=='6')
+			{
+				squareBoard[6]=c;
+			}else if(choice ==7 && squareBoard[7]=='7')
+			{
+				squareBoard[7]=c;
+			}else if(choice ==8 && squareBoard[8]=='8')
+			{
+				squareBoard[8]=c;
+			}else if(choice ==9 && squareBoard[9]=='9')
+			{
+				squareBoard[9]=c;
+			}else
+			{
+				System.out.println("Invalid move.");
+				player--;
+			}
+			
+			i=ttt.decideWiningStroke();
+			player++;
+			
+		}while(i==-1);// end of while loop
+		
+		ttt.decideWiningStroke();
+		
+		if(i==1)
+		{
+			System.out.println("You won. !!!");
+		}else
+		{
+			System.out.println("Game draw.");
+		}
+		
+	}
+}
